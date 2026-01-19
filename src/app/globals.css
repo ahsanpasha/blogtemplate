@@ -5802,3 +5802,22 @@ blockquote {
 .fixed.top-0.right-0.h-full {
     z-index: 9999 !important;
 }
+
+/* Custom 900px breakpoint classes */
+@media screen and (min-width: 900px) {
+    .nav-menu-desktop {
+        display: flex !important;
+    }
+    .nav-menu-mobile-btn {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    .nav-menu-desktop {
+        display: none !important;
+    }
+    .nav-menu-mobile-btn {
+        display: block !important;
+    }
+}

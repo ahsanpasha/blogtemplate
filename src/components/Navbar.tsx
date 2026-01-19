@@ -26,7 +26,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <nav role="navigation" className="nav-menu w-nav-menu hidden lg:flex">
+          <nav role="navigation" className="nav-menu w-nav-menu nav-menu-desktop">
             <div className="navbar-categories w-dyn-list">
               <div role="list" className="navbar-categories-list w-dyn-items">
                 <div role="listitem" className="w-dyn-item"><Link href="/category/off-grid" className="nav-link w-nav-link">Off Grid</Link></div>
@@ -38,26 +38,28 @@ export default function Navbar() {
             <Link href="/contact" className="nav-link _0margin w-nav-link">Contact</Link>
           </nav>
 
-          <div className="nav-right">
+          {/* <div className="nav-right">
             <div className="nav-search-block">
               <Link href="#" className="search-button w-inline-block">
                 <img src="https://cdn.prod.website-files.com/601b0e022dc24f4ea11206ad/601ec0074cab6c68cb0b3687_Search.svg" alt="" className="search-icon" />
               </Link>
             </div>
-            <div className="nav-menu-button">
-              <button
-                onClick={() => setIsOpen(true)}
-                className="flex items-center justify-center p-2 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="menu"
-                style={{ width: '40px', height: '40px', background: 'none', border: 'none', cursor: 'pointer' }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-              </button>
-            </div>
+            
+          </div> */}
+
+          <div className="nav-menu-button nav-menu-mobile-btn">
+            <button
+              onClick={() => setIsOpen(true)}
+              className="flex items-center justify-center p-2 hover:bg-gray-100 rounded-full transition-colors"
+              aria-label="menu"
+              style={{ width: '40px', height: '40px', background: 'none', border: 'none', cursor: 'pointer' }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
           </div>
         </div>
       </nav>
