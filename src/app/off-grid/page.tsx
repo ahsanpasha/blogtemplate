@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Post } from '@/data/posts';
+import PageLoader from '@/components/PageLoader';
 
 export default function OffGridPage() {
     const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
@@ -25,7 +26,7 @@ export default function OffGridPage() {
     }, []);
 
     if (loading) {
-        return <div className="section" style={{ padding: '100px 0', textAlign: 'center' }}><h3>Loading posts...</h3></div>;
+        return <PageLoader />;
     }
 
     return (

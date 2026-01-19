@@ -3,6 +3,7 @@ import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Post } from '@/data/posts';
+import PageLoader from '@/components/PageLoader';
 
 export default function PostDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = use(params);
@@ -28,39 +29,7 @@ export default function PostDetailPage({ params }: { params: Promise<{ slug: str
     }, [slug]);
 
     if (loading) {
-        return (
-            <div className="loader-wrapper" style={{
-                minHeight: '80vh',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                background: '#fff'
-            }}>
-                <div className="spinner"></div>
-                <h3 style={{
-                    marginTop: '25px',
-                    fontSize: '18px',
-                    fontWeight: '600',
-                    color: '#343641',
-                    letterSpacing: '1px',
-                    textTransform: 'uppercase'
-                }}>Loading Post</h3>
-                <style jsx>{`
-                    .spinner {
-                        width: 50px;
-                        height: 50px;
-                        border: 3px solid rgba(52, 54, 65, 0.1);
-                        border-radius: 50%;
-                        border-top-color: #343641;
-                        animation: spin 1s ease-in-out infinite;
-                    }
-                    @keyframes spin {
-                        to { transform: rotate(360deg); }
-                    }
-                `}</style>
-            </div>
-        );
+        return <PageLoader />;
     }
 
     if (!post) {
