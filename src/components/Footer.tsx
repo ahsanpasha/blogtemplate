@@ -27,7 +27,7 @@ export default function Footer() {
                             </li>
                         </ul>
                     </div>
-                    <div>
+                    {/* <div>
                         <ul role="list" className="w-list-unstyled">
                             <li>
                                 <h5 className="footer-title">Template</h5>
@@ -36,23 +36,23 @@ export default function Footer() {
                                 <Link href="/template-info/licensing" className="footer-link">Licenses</Link>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
                     <div>
                         <ul role="list" className="w-list-unstyled">
                             <li>
                                 <h5 className="footer-title">Categories</h5>
                                 <div className="w-dyn-list">
                                     <div role="list" className="w-dyn-items">
-                                        <div role="listitem" className="w-dyn-item"><Link href="/category/off-grid" className="footer-link">Off Grid</Link></div>
-                                        <div role="listitem" className="w-dyn-item"><Link href="/category/travel" className="footer-link">Travel</Link></div>
-                                        <div role="listitem" className="w-dyn-item"><Link href="/category/food" className="footer-link">Food</Link></div>
+                                        <div role="listitem" className="w-dyn-item"><Link href="/off-grid" className="footer-link">Off Grid</Link></div>
+                                        <div role="listitem" className="w-dyn-item"><Link href="/travel" className="footer-link">Travel</Link></div>
+                                        <div role="listitem" className="w-dyn-item"><Link href="/food" className="footer-link">Food</Link></div>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <h5 className="footer-title">Newsletter</h5>
+                        {/* <h5 className="footer-title">Newsletter</h5>
                         <div className="footer-form-block w-form">
                             <form id="email-form" name="email-form" data-name="Email Form" method="get" className="footer-form" data-wf-page-id="601b0e022dc24f03e11206ae" data-wf-element-id="80dcfef2-5b44-28cb-289c-30d937b752e0">
                                 <input className="footer-text-field w-input" maxLength={256} name="Email" data-name="Email" placeholder="Enter your email" type="text" id="Email" />
@@ -60,12 +60,10 @@ export default function Footer() {
                             </form>
                             <div className="w-form-done"><div>Thank you! Your submission has been received!</div></div>
                             <div className="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
-                <div className="bottom-footer">
-                    <div className="powered">© 2026 Blogy Template. All rights reserved.</div>
-                </div>
+
             </div>
         </footer>
     );

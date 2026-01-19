@@ -1,9 +1,32 @@
 "use client";
 import Link from 'next/link';
-import { posts } from '@/data/posts';
+import { useState, useEffect } from 'react';
+import { Post } from '@/data/posts';
 
 export default function TravelPage() {
-    const filteredPosts = posts.filter(post => post.category === "Travel");
+    const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchPosts() {
+            try {
+                const response = await fetch('/api/posts?category=Travel');
+                const data = await response.json();
+                if (data.status === 'success') {
+                    setFilteredPosts(data.payload);
+                }
+            } catch (error) {
+                console.error('Failed to fetch posts:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchPosts();
+    }, []);
+
+    if (loading) {
+        return <div className="section" style={{ padding: '100px 0', textAlign: 'center' }}><h3>Loading posts...</h3></div>;
+    }
 
     return (
         <div className="section">

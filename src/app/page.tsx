@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link';
-import { useState } from 'react';
-import { posts } from '@/data/posts';
+import { useState, useEffect } from 'react';
+import { Post } from '@/data/posts';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('Tab 1');
@@ -11,8 +11,32 @@ export default function Home() {
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % totalSlides);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
 
-  const latestPosts = posts.slice(0, 4);
-  const allPosts = posts.slice(4);
+  const [allPosts, setAllPosts] = useState<Post[]>([]);
+  const [latestPosts, setLatestPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch('/api/posts');
+        const data = await response.json();
+        if (data.status === 'success') {
+          const postsData = data.payload;
+          setAllPosts(postsData);
+          setLatestPosts(postsData.slice(0, 4));
+        }
+      } catch (error) {
+        console.error('Failed to fetch posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPosts();
+  }, []);
+
+  if (loading) {
+    return <div className="section" style={{ padding: '100px 0', textAlign: 'center' }}><h3>Loading posts...</h3></div>;
+  }
 
   return (
     <>

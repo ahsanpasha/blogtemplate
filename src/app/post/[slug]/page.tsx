@@ -1,16 +1,35 @@
 "use client";
-import { use } from 'react';
+import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { posts } from '@/data/posts';
+import { Post } from '@/data/posts';
 
 export default function PostDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = use(params);
     const router = useRouter();
+    const [post, setPost] = useState<Post | null>(null);
+    const [loading, setLoading] = useState(true);
 
-    // Find the post by slug
-    // The slug in params is the last part of the post.link
-    const post = posts.find(p => p.link.split('/').pop() === slug);
+    useEffect(() => {
+        async function fetchPost() {
+            try {
+                const response = await fetch(`/api/posts/${slug}`);
+                const data = await response.json();
+                if (data.status === 'success') {
+                    setPost(data.payload);
+                }
+            } catch (error) {
+                console.error('Failed to fetch post:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchPost();
+    }, [slug]);
+
+    if (loading) {
+        return <div className="section" style={{ padding: '100px 0', textAlign: 'center' }}><h3>Loading post...</h3></div>;
+    }
 
     if (!post) {
         return (
