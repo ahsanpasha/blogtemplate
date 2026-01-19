@@ -5808,6 +5808,7 @@ blockquote {
     .nav-menu-desktop {
         display: flex !important;
     }
+
     .nav-menu-mobile-btn {
         display: none !important;
     }
@@ -5817,6 +5818,7 @@ blockquote {
     .nav-menu-desktop {
         display: none !important;
     }
+
     .nav-menu-mobile-btn {
         display: block !important;
     }
