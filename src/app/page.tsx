@@ -34,7 +34,39 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <div className="section" style={{ padding: '100px 0', textAlign: 'center' }}><h3>Loading posts...</h3></div>;
+    return (
+      <div className="loader-wrapper" style={{
+        minHeight: '80vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: '#fff'
+      }}>
+        <div className="spinner"></div>
+        <h3 style={{
+          marginTop: '25px',
+          fontSize: '18px',
+          fontWeight: '600',
+          color: '#343641',
+          letterSpacing: '1px',
+          textTransform: 'uppercase'
+        }}>Loading Stories</h3>
+        <style jsx>{`
+          .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(52, 54, 65, 0.1);
+            border-radius: 50%;
+            border-top-color: #343641;
+            animation: spin 1s ease-in-out infinite;
+          }
+          @keyframes spin {
+            to { transform: rotate(360deg); }
+          }
+        `}</style>
+      </div>
+    );
   }
 
   return (
