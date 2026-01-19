@@ -1,0 +1,63 @@
+"use client";
+import Link from 'next/link';
+import { posts } from '@/data/posts';
+
+export default function TravelPage() {
+    const filteredPosts = posts.filter(post => post.category === "Travel");
+
+    return (
+        <div className="section">
+            <div className="block-content top-bot-margin">
+                <div className="section-title-line">
+                    <div className="category-line"></div>
+                    <h1 className="section-title">Travel Adventures</h1>
+                    <div className="red-line-small"></div>
+                    <div className="black-line-big"></div>
+                </div>
+
+                <p className="paragraph" style={{ maxWidth: '600px', marginBottom: '40px' }}>
+                    Explore the world through our eyes. From hidden gems in Europe to travel tips and
+                    stories from the edge of the land, find your next inspiration here.
+                </p>
+
+                <div className="all-posts-grid">
+                    <div className="w-dyn-list">
+                        <div role="list" className="all-post-collection-list w-dyn-items" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
+                            {filteredPosts.map((post) => (
+                                <div role="listitem" className="w-dyn-item" key={post.id}>
+                                    <div className="post-block">
+                                        <Link href={post.link} className="post-image-block-link all-posts-block w-inline-block">
+                                            <img src={post.image} loading="lazy" alt={post.title} className="post-image" />
+                                        </Link>
+                                        <div className="post-info-block-small">
+                                            <div className="category-block">
+                                                <div className="category-line"></div>
+                                                <div className="post-category">{post.category}</div>
+                                            </div>
+                                            <Link href={post.link} className="title-link-block w-inline-block">
+                                                <h3 className="post-title h4">{post.title}</h3>
+                                            </Link>
+                                            <div className="date-time-block">
+                                                <div className="post-date">{post.date}</div>
+                                                <div className="dot">•</div>
+                                                <div className="read-time">{post.readTime}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style jsx>{`
+        @media screen and (max-width: 767px) {
+          .all-post-collection-list {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+        </div>
+    );
+}

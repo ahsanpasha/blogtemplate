@@ -25,7 +25,7 @@ export default function Home() {
                   <div role="listitem" className="w-dyn-item">
                     <div className="hero-slider-grid">
                       <div id="w-node-_47317165-5d47-29f1-5927-d9cfe7e23993-e11206ae" className="hero-content-left">
-                        <Link href="/category/travel" className="hero-category-block w-inline-block">
+                        <Link href="/travel" className="hero-category-block w-inline-block">
                           <div className="category-line"></div>
                           <div className="post-category">Travel</div>
                         </Link>
@@ -54,7 +54,7 @@ export default function Home() {
                     <div className="hero-slider-grid" aria-hidden="true">
                       <div id="w-node-_4ac7eaca-e3a3-7833-a4ec-9bc76fe2c971-e11206ae" className="hero-content-left" aria-hidden="true">
                         <div aria-hidden="true">
-                          <Link href="/category/off-grid" className="hero-category-block w-inline-block" tabIndex={-1} aria-hidden="true">
+                          <Link href="/off-grid" className="hero-category-block w-inline-block" tabIndex={-1} aria-hidden="true">
                             <div className="category-line" aria-hidden="true"></div>
                             <div className="post-category" aria-hidden="true">Off Grid</div>
                           </Link>
@@ -84,7 +84,7 @@ export default function Home() {
                     <div className="hero-slider-grid" aria-hidden="true">
                       <div id="w-node-d70d9853-8d3d-693a-93da-b7f2bbcccacb-e11206ae" className="hero-content-left" aria-hidden="true">
                         <div aria-hidden="true">
-                          <Link href="/category/off-grid" className="hero-category-block w-inline-block" tabIndex={-1} aria-hidden="true">
+                          <Link href="/off-grid" className="hero-category-block w-inline-block" tabIndex={-1} aria-hidden="true">
                             <div className="category-line" aria-hidden="true"></div>
                             <div className="post-category" aria-hidden="true">Off Grid</div>
                           </Link>
@@ -127,7 +127,7 @@ export default function Home() {
             <div role="list" className="w-dyn-items">
               <div role="listitem" className="w-dyn-item">
                 <div className="featured-post-block">
-                  <Link href="/category/travel" className="category-block w-inline-block">
+                  <Link href="/travel" className="category-block w-inline-block">
                     <div className="category-line"></div>
                     <div className="post-category">Travel</div>
                   </Link>
@@ -148,7 +148,7 @@ export default function Home() {
             <div role="list" className="w-dyn-items">
               <div role="listitem" className="w-dyn-item">
                 <div className="featured-post-block">
-                  <Link href="/category/food" className="category-block w-inline-block">
+                  <Link href="/food" className="category-block w-inline-block">
                     <div className="category-line"></div>
                     <div className="post-category">Food</div>
                   </Link>
@@ -169,7 +169,7 @@ export default function Home() {
             <div role="list" className="w-dyn-items">
               <div role="listitem" className="w-dyn-item">
                 <div className="featured-post-block">
-                  <Link href="/category/food" className="category-block w-inline-block">
+                  <Link href="/food" className="category-block w-inline-block">
                     <div className="category-line"></div>
                     <div className="post-category">Food</div>
                   </Link>

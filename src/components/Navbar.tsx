@@ -29,9 +29,9 @@ export default function Navbar() {
           <nav role="navigation" className="nav-menu w-nav-menu nav-menu-desktop">
             <div className="navbar-categories w-dyn-list">
               <div role="list" className="navbar-categories-list w-dyn-items">
-                <div role="listitem" className="w-dyn-item"><Link href="/category/off-grid" className="nav-link w-nav-link">Off Grid</Link></div>
-                <div role="listitem" className="w-dyn-item"><Link href="/category/travel" className="nav-link w-nav-link">Travel</Link></div>
-                <div role="listitem" className="w-dyn-item"><Link href="/category/food" className="nav-link w-nav-link">Food</Link></div>
+                <div role="listitem" className="w-dyn-item"><Link href="/off-grid" className="nav-link w-nav-link">Off Grid</Link></div>
+                <div role="listitem" className="w-dyn-item"><Link href="/travel" className="nav-link w-nav-link">Travel</Link></div>
+                <div role="listitem" className="w-dyn-item"><Link href="/food" className="nav-link w-nav-link">Food</Link></div>
               </div>
             </div>
             <Link href="/about" className="nav-link w-nav-link">About</Link>
@@ -113,9 +113,9 @@ export default function Navbar() {
             <div className="space-y-8">
               <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] pl-0">Browse</h3>
               <div className="flex flex-col space-y-6">
-                <Link href="/category/off-grid" onClick={() => setIsOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-red-500 transition-colors" style={{ textDecoration: 'none' }}>Off Grid</Link>
-                <Link href="/category/travel" onClick={() => setIsOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-red-500 transition-colors" style={{ textDecoration: 'none' }}>Travel</Link>
-                <Link href="/category/food" onClick={() => setIsOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-red-500 transition-colors" style={{ textDecoration: 'none' }}>Food</Link>
+                <Link href="/off-grid" onClick={() => setIsOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-red-500 transition-colors" style={{ textDecoration: 'none' }}>Off Grid</Link>
+                <Link href="/travel" onClick={() => setIsOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-red-500 transition-colors" style={{ textDecoration: 'none' }}>Travel</Link>
+                <Link href="/food" onClick={() => setIsOpen(false)} className="text-2xl font-bold text-gray-900 hover:text-red-500 transition-colors" style={{ textDecoration: 'none' }}>Food</Link>
               </div>
             </div>
 
