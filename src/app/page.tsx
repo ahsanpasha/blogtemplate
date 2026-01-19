@@ -6,14 +6,13 @@ import { Post } from '@/data/posts';
 export default function Home() {
   const [activeTab, setActiveTab] = useState('Tab 1');
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 3;
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [latestPosts, setLatestPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const heroPosts = allPosts.slice(0, 3);
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % (heroPosts.length || 1));
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + (heroPosts.length || 1)) % (heroPosts.length || 1));
 
   useEffect(() => {
     async function fetchPosts() {
@@ -43,95 +42,41 @@ export default function Home() {
       <div className="header-section">
         <div data-delay="4000" data-animation="outin" className="hero-slider w-slider" data-autoplay="false" data-easing="ease" style={{ opacity: 1, transform: 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)', transformStyle: 'preserve-3d' }} data-hide-arrows="false" data-disable-swipe="false" data-w-id="ce1e75c6-0ee8-c5a3-bccc-c573f337a042" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true" role="region" aria-label="carousel">
           <div className="hero-mask w-slider-mask" id="w-slider-mask-0">
-            <div className="hero-post-block w-slide" aria-label="1 of 3" role="group" style={{ transition: 'all', transform: 'translateX(0px)', opacity: currentSlide === 0 ? 1 : 0, visibility: currentSlide === 0 ? 'visible' : 'hidden', position: currentSlide === 0 ? 'relative' : 'absolute', top: 0, left: 0 }}>
-              <div className="w-dyn-list">
-                <div role="list" className="w-dyn-items">
-                  <div role="listitem" className="w-dyn-item">
-                    <div className="hero-slider-grid">
-                      <div id="w-node-_47317165-5d47-29f1-5927-d9cfe7e23993-e11206ae" className="hero-content-left">
-                        <Link href="/travel" className="hero-category-block w-inline-block">
-                          <div className="category-line"></div>
-                          <div className="post-category">Travel</div>
-                        </Link>
-                        <Link href="/post/women-at-the-end-of-the-land" className="title-link-block w-inline-block">
-                          <h1 className="hero-title">Women at the End of the Land</h1>
-                        </Link>
-                        <div className="hero-date-time-block">
-                          <div className="hero-date">October 22, 2020</div>
-                          <div className="hero-dot">•</div>
-                          <div className="hero-read-time">7 min read</div>
-                        </div>
-                        <p className="paragraph">Phasellus porttitor sapien a purus venenatis condimentum. Nunc lectus ipsum, laoreet ut efficitur. Phasellus porttitor sapien a purus venenatis condimentum.</p>
-                      </div>
-                      <Link id="w-node-_47317165-5d47-29f1-5927-d9cfe7e239a5-e11206ae" href="/post/women-at-the-end-of-the-land" className="hero-image-block w-inline-block">
-                        <img alt="" loading="lazy" width="944" src="https://cdn.prod.website-files.com/601b0eabbce5fc78dc318621/601e98759239ef2558d88222_Main%20Post%20Image%208.png" className="hero-image" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="hero-post-block w-slide" aria-label="2 of 3" role="group" aria-hidden={currentSlide !== 1} style={{ transition: 'all', transform: 'translateX(0px)', opacity: currentSlide === 1 ? 1 : 0, visibility: currentSlide === 1 ? 'visible' : 'hidden', position: currentSlide === 1 ? 'relative' : 'absolute', top: 0, left: 0 }}>
-              <div className="w-dyn-list" aria-hidden={currentSlide !== 1}>
-                <div role="list" className="w-dyn-items" aria-hidden="true">
-                  <div role="listitem" className="w-dyn-item" aria-hidden="true">
-                    <div className="hero-slider-grid" aria-hidden="true">
-                      <div id="w-node-_4ac7eaca-e3a3-7833-a4ec-9bc76fe2c971-e11206ae" className="hero-content-left" aria-hidden="true">
-                        <div aria-hidden="true">
-                          <Link href="/off-grid" className="hero-category-block w-inline-block" tabIndex={-1} aria-hidden="true">
-                            <div className="category-line" aria-hidden="true"></div>
-                            <div className="post-category" aria-hidden="true">Off Grid</div>
-                          </Link>
-                          <Link href="/post/this-tiny-house-is-off-grid-perfection" className="title-link-block w-inline-block" tabIndex={-1} aria-hidden="true">
-                            <h1 className="hero-title" aria-hidden="true">This Tiny House Is Off Grid Perfection</h1>
-                          </Link>
-                          <div className="hero-date-time-block" aria-hidden="true">
-                            <div className="hero-date" aria-hidden="true">February 25, 2021</div>
-                            <div className="hero-dot" aria-hidden="true">•</div>
-                            <div className="hero-read-time" aria-hidden="true">7 min read</div>
+            {heroPosts.length > 0 ? (
+              heroPosts.map((post, index) => (
+                <div key={post.id || index} className="hero-post-block w-slide" aria-label={`${index + 1} of ${heroPosts.length}`} role="group" style={{ transition: 'all', transform: 'translateX(0px)', opacity: currentSlide === index ? 1 : 0, visibility: currentSlide === index ? 'visible' : 'hidden', position: currentSlide === index ? 'relative' : 'absolute', top: 0, left: 0 }}>
+                  <div className="w-dyn-list">
+                    <div role="list" className="w-dyn-items">
+                      <div role="listitem" className="w-dyn-item">
+                        <div className="hero-slider-grid">
+                          <div id="w-node-_47317165-5d47-29f1-5927-d9cfe7e23993-e11206ae" className="hero-content-left">
+                            <Link href={post.categoryLink} className="hero-category-block w-inline-block">
+                              <div className="category-line"></div>
+                              <div className="post-category">{post.category}</div>
+                            </Link>
+                            <Link href={post.link} className="title-link-block w-inline-block">
+                              <h1 className="hero-title">{post.title}</h1>
+                            </Link>
+                            <div className="hero-date-time-block">
+                              <div className="hero-date">{post.date}</div>
+                              <div className="hero-dot">•</div>
+                              <div className="hero-read-time">{post.readTime}</div>
+                            </div>
+                            <p className="paragraph">{post.content ? (post.content.length > 150 ? post.content.substring(0, 150) + '...' : post.content) : 'No content available.'}</p>
                           </div>
-                          <p className="paragraph" aria-hidden="true">Phasellus porttitor sapien a purus venenatis condimentum. Nunc lectus ipsum, laoreet ut efficitur. Phasellus porttitor sapien a purus venenatis condimentum.</p>
+                          <Link id="w-node-_47317165-5d47-29f1-5927-d9cfe7e239a5-e11206ae" href={post.link} className="hero-image-block w-inline-block">
+                            <img alt={post.title} loading="lazy" width="944" src={post.image} className="hero-image" style={{ objectFit: 'cover' }} />
+                          </Link>
                         </div>
                       </div>
-                      <Link id="w-node-_4ac7eaca-e3a3-7833-a4ec-9bc76fe2c97e-e11206ae" href="/post/this-tiny-house-is-off-grid-perfection" className="hero-image-block w-inline-block" tabIndex={-1} aria-hidden="true">
-                        <img alt="" loading="lazy" width="1053" src="https://cdn.prod.website-files.com/601b0eabbce5fc78dc318621/60302d12c924de6cd28f2b41_Main%20Post%20Image%2011.png" className="hero-image" aria-hidden="true" />
-                      </Link>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="hero-post-block w-slide" aria-label="3 of 3" role="group" aria-hidden={currentSlide !== 2} style={{ transition: 'all', transform: 'translateX(0px)', opacity: currentSlide === 2 ? 1 : 0, visibility: currentSlide === 2 ? 'visible' : 'hidden', position: currentSlide === 2 ? 'relative' : 'absolute', top: 0, left: 0 }}>
-              <div className="w-dyn-list" aria-hidden={currentSlide !== 2}>
-                <div role="list" className="w-dyn-items" aria-hidden="true">
-                  <div role="listitem" className="w-dyn-item" aria-hidden="true">
-                    <div className="hero-slider-grid" aria-hidden="true">
-                      <div id="w-node-d70d9853-8d3d-693a-93da-b7f2bbcccacb-e11206ae" className="hero-content-left" aria-hidden="true">
-                        <div aria-hidden="true">
-                          <Link href="/off-grid" className="hero-category-block w-inline-block" tabIndex={-1} aria-hidden="true">
-                            <div className="category-line" aria-hidden="true"></div>
-                            <div className="post-category" aria-hidden="true">Off Grid</div>
-                          </Link>
-                          <Link href="/post/the-best-off-grid-heating-systems" className="title-link-block w-inline-block" tabIndex={-1} aria-hidden="true">
-                            <h1 className="hero-title" aria-hidden="true">The Best Off Grid Heating Systems </h1>
-                          </Link>
-                          <div className="hero-date-time-block" aria-hidden="true">
-                            <div className="hero-date" aria-hidden="true">February 25, 2021</div>
-                            <div className="hero-dot" aria-hidden="true">•</div>
-                            <div className="hero-read-time" aria-hidden="true">6 min read</div>
-                          </div>
-                          <p className="paragraph" aria-hidden="true">Phasellus porttitor sapien a purus venenatis condimentum. Nunc lectus ipsum, laoreet ut efficitur. Phasellus porttitor sapien a purus venenatis condimentum.</p>
-                        </div>
-                      </div>
-                      <Link id="w-node-d70d9853-8d3d-693a-93da-b7f2bbcccad8-e11206ae" href="/post/the-best-off-grid-heating-systems" className="hero-image-block w-inline-block" tabIndex={-1} aria-hidden="true">
-                        <img alt="" loading="lazy" width="1065" src="https://cdn.prod.website-files.com/601b0eabbce5fc78dc318621/6030302271aa6a1af8d25e53_Main-Post-Image-12.jpg" sizes="(max-width: 767px) 100vw, (max-width: 991px) 94vw, 70vw" srcSet="https://cdn.prod.website-files.com/601b0eabbce5fc78dc318621/6030302271aa6a1af8d25e53_Main-Post-Image-12-p-500.jpeg 500w, https://cdn.prod.website-files.com/601b0eabbce5fc78dc318621/6030302271aa6a1af8d25e53_Main-Post-Image-12.jpg 790w" className="hero-image" aria-hidden="true" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div aria-live="off" aria-atomic="true" className="w-slider-aria-label" data-wf-ignore=""></div>
+              ))
+            ) : (
+              <div style={{ padding: '50px', textAlign: 'center' }}>No featured posts found.</div>
+            )}
+
             <div aria-live="off" aria-atomic="true" className="w-slider-aria-label" data-wf-ignore=""></div>
           </div>
           <div className="left-arrow w-slider-arrow-left" role="button" tabIndex={0} aria-controls="w-slider-mask-0" aria-label="previous slide" onClick={prevSlide}>
@@ -328,7 +273,7 @@ export default function Home() {
                     <a href="https://www.youtube.com/" target="_blank" className="social-media-block w-inline-block"><img src="https://cdn.prod.website-files.com/601b0e022dc24f4ea11206ad/6023ab6439eea8b40568b6a8_Youtube.svg" loading="lazy" alt="" className="social-media-icon" /></a>
                   </div>
                 </div>
-                <div data-w-id="Div Block 6" style={{ opacity: 1, transform: 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)', transformStyle: 'preserve-3d' }} className="newsletter-block">
+                {/* <div data-w-id="Div Block 6" style={{ opacity: 1, transform: 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)', transformStyle: 'preserve-3d' }} className="newsletter-block">
                   <h3 className="_0margin">Newsletter</h3>
                   <div>Phasellus porttitor sapien a purus venenatis condimentum.</div>
                   <div className="form-block w-form">
@@ -339,7 +284,7 @@ export default function Home() {
                     <div className="w-form-done"><div>Thank you! Your submission has been received!</div></div>
                     <div className="w-form-fail" style={{ display: 'none' }}><div>Oops! Something went wrong while submitting the form.</div></div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

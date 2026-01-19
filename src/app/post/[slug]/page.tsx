@@ -94,18 +94,8 @@ export default function PostDetailPage({ params }: { params: Promise<{ slug: str
                 </div>
 
                 <div className="post-detail-content" style={{ maxWidth: '800px', margin: '0 auto' }}>
-                    <p className="paragraph" style={{ fontSize: '18px', lineHeight: '1.8', marginBottom: '30px' }}>
+                    <p className="paragraph" style={{ fontSize: '18px', lineHeight: '1.8', marginBottom: '30px', whiteSpace: 'pre-wrap' }}>
                         {post.content}
-                    </p>
-                    <p className="paragraph" style={{ fontSize: '18px', lineHeight: '1.8', marginBottom: '30px' }}>
-                        Phasellus porttitor sapien a purus venenatis condimentum. Nunc lectus ipsum, laoreet ut efficitur.
-                        Phasellus porttitor sapien a purus venenatis condimentum. In hac habitasse platea dictumst.
-                        Vivamus sed arcu ut eros scelerisque pharetra.
-                    </p>
-                    <p className="paragraph" style={{ fontSize: '18px', lineHeight: '1.8', marginBottom: '30px' }}>
-                        Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo,
-                        lacinia eget consectetur sed, convallis at tellus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                        Donec rutrum congue leo eget malesuada.
                     </p>
                 </div>
             </div>
