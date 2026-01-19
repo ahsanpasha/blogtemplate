@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { Post } from '@/data/posts';
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('Tab 1');
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [latestPosts, setLatestPosts] = useState<Post[]>([]);
@@ -91,8 +92,6 @@ export default function Home() {
                             </Link>
                             <div className="hero-date-time-block">
                               <div className="hero-date">{post.date}</div>
-                              <div className="hero-dot">•</div>
-                              <div className="hero-read-time">{post.readTime}</div>
                             </div>
                             <p className="paragraph">{post.content ? (post.content.length > 150 ? post.content.substring(0, 150) + '...' : post.content) : 'No content available.'}</p>
                           </div>
@@ -124,7 +123,7 @@ export default function Home() {
           </div>
         </div>
         <article data-w-id="ce1e75c6-0ee8-c5a3-bccc-c573f337a05e" style={{ opacity: 1, transform: 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)', transformStyle: 'preserve-3d' }} className="hero-featured-post-grid">
-          <div className="w-dyn-list">
+          {/* <div className="w-dyn-list">
             <div role="list" className="w-dyn-items">
               <div role="listitem" className="w-dyn-item">
                 <div className="featured-post-block">
@@ -137,15 +136,13 @@ export default function Home() {
                   </Link>
                   <div className="date-time-block">
                     <div className="post-date">October 4, 2021</div>
-                    <div className="dot">•</div>
-                    <div className="read-time">4 min read</div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="vertical-divider"></div>
-          <div className="w-dyn-list">
+          </div> */}
+          {/* <div className="vertical-divider"></div> */}
+          {/* <div className="w-dyn-list">
             <div role="list" className="w-dyn-items">
               <div role="listitem" className="w-dyn-item">
                 <div className="featured-post-block">
@@ -158,15 +155,13 @@ export default function Home() {
                   </Link>
                   <div className="date-time-block">
                     <div className="post-date">August 1, 2021</div>
-                    <div className="dot">•</div>
-                    <div className="read-time">6 min read</div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="vertical-divider"></div>
-          <div className="w-dyn-list">
+          </div> */}
+          {/* <div className="vertical-divider"></div> */}
+          {/* <div className="w-dyn-list">
             <div role="list" className="w-dyn-items">
               <div role="listitem" className="w-dyn-item">
                 <div className="featured-post-block">
@@ -179,14 +174,12 @@ export default function Home() {
                   </Link>
                   <div className="date-time-block">
                     <div className="post-date">June 4, 2021</div>
-                    <div className="dot">•</div>
-                    <div className="read-time">4 min read</div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="vertical-divider hiden"></div>
+          </div> */}
+          {/* <div className="vertical-divider hiden"></div> */}
         </article>
       </div>
 
@@ -216,8 +209,6 @@ export default function Home() {
                         </Link>
                         <div className="date-time-block">
                           <div className="post-date">{post.date}</div>
-                          <div className="dot">•</div>
-                          <div className="read-time">{post.readTime}</div>
                         </div>
                       </div>
                     </div>
@@ -241,11 +232,11 @@ export default function Home() {
           <div className="all-posts-side-blocks">
             <div data-duration-in="300" data-duration-out="100" data-current="Tab 1" data-easing="ease" className="w-tabs">
               <div className="w-tab-content">
-                <div data-w-tab="Tab 1" className={`w-tab-pane ${activeTab === 'Tab 1' ? 'w--tab-active' : ''}`} id="w-tabs-0-data-w-pane-0" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-0">
+                <div className="w-tab-pane w--tab-active" role="tabpanel">
                   <div className="all-posts-grid">
                     <div className="w-dyn-list">
                       <article data-w-id="a9a0c8df-a7bf-8a44-dff0-98bc07f606bb" style={{ opacity: 1, transform: 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)', transformStyle: 'preserve-3d' }} role="list" className="all-post-collection-list w-dyn-items">
-                        {allPosts.map((post) => (
+                        {allPosts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage).map((post) => (
                           <div role="listitem" className="w-dyn-item" key={post.id}>
                             <div className="post-block">
                               <Link href={post.link} className="post-image-block-link all-posts-block w-inline-block">
@@ -261,8 +252,6 @@ export default function Home() {
                                 </Link>
                                 <div className="date-time-block">
                                   <div className="post-date">{post.date}</div>
-                                  <div className="dot">•</div>
-                                  <div className="read-time">{post.readTime}</div>
                                 </div>
                               </div>
                             </div>
@@ -272,19 +261,22 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div data-w-tab="Tab 2" className={`w-tab-pane ${activeTab === 'Tab 2' ? 'w--tab-active' : ''}`} id="w-tabs-0-data-w-pane-1" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-1">
-                  {/* Additional tabs content would go here */}
-                  <div className="w-dyn-list">
-                    <div className="w-dyn-empty">
-                      <div>No items found.</div>
-                    </div>
-                  </div>
+              </div>
+              {allPosts.length > postsPerPage && (
+                <div className="tabs-menu w-tab-menu" role="tablist">
+                  {Array.from({ length: Math.ceil(allPosts.length / postsPerPage) }, (_, i) => (
+                    <a
+                      key={i + 1}
+                      onClick={() => setCurrentPage(i + 1)}
+                      className={`tab-link-tab w-inline-block w-tab-link ${currentPage === i + 1 ? 'w--current' : ''}`}
+                      role="tab"
+                      aria-selected={currentPage === i + 1}
+                    >
+                      <div>{i + 1}</div>
+                    </a>
+                  ))}
                 </div>
-              </div>
-              <div className="tabs-menu w-tab-menu" role="tablist">
-                <a onClick={() => setActiveTab('Tab 1')} data-w-tab="Tab 1" className={`tab-link-tab w-inline-block w-tab-link ${activeTab === 'Tab 1' ? 'w--current' : ''}`} id="w-tabs-0-data-w-tab-0" href="#w-tabs-0-data-w-pane-0" role="tab" aria-controls="w-tabs-0-data-w-pane-0" aria-selected={activeTab === 'Tab 1'}><div>1</div></a>
-                <a onClick={() => setActiveTab('Tab 2')} data-w-tab="Tab 2" className={`tab-link-tab w-inline-block w-tab-link ${activeTab === 'Tab 2' ? 'w--current' : ''}`} tabIndex={-1} id="w-tabs-0-data-w-tab-1" href="#w-tabs-0-data-w-pane-1" role="tab" aria-controls="w-tabs-0-data-w-pane-1" aria-selected={activeTab === 'Tab 2'}><div>2</div></a>
-              </div>
+              )}
             </div>
             <div>
               <div className="sticky-block">

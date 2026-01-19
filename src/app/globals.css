@@ -3067,10 +3067,15 @@ blockquote {
 
 .post-image-block-link.all-posts-block {
     position: relative;
-    height: auto
+    height: 250px !important;
+    width: 100% !important;
+    overflow: hidden !important;
 }
 
 .post-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
     -webkit-transition: -webkit-transform 350ms ease-in-out;
     transition: transform 350ms ease-in-out;
     transition: transform 350ms ease-in-out, -webkit-transform 350ms ease-in-out
