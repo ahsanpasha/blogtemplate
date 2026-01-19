@@ -3073,8 +3073,8 @@ blockquote {
 }
 
 .post-image {
-    width: 100% !important;
-    height: 100% !important;
+    width: 600px !important;
+    height: 350px !important;
     object-fit: cover !important;
     -webkit-transition: -webkit-transform 350ms ease-in-out;
     transition: transform 350ms ease-in-out;
@@ -5194,8 +5194,11 @@ blockquote {
         padding: 16px
     }
 
-    .post-image-block-link {
-        height: auto
+
+
+    .post-image {
+        width: 100% !important;
+        height: 200px !important;
     }
 
     .post-date {
