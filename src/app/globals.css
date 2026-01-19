@@ -2831,6 +2831,8 @@ blockquote {
 }
 
 .hero-image {
+    height: 100%;
+    object-fit: cover;
     position: relative;
     grid-auto-columns: 1fr;
     -ms-grid-columns: 1fr 1fr;
